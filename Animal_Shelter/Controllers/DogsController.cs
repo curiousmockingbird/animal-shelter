@@ -4,19 +4,39 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Animal_Shelter.Models;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
+using Animal_Shelter.Repository;
 
 namespace Animal_Shelter.Controllers
 {
+  [Authorize]
   [Route("api/[controller]")]
   [ApiController]
   public class DogsController : ControllerBase
   {
+    private readonly IJWTManagerRepository _jWTManager;
     private readonly Animal_ShelterContext _db;
 
-    public DogsController(Animal_ShelterContext db)
+    public DogsController(IJWTManagerRepository jWTManager, Animal_ShelterContext db)
     {
+      this._jWTManager = jWTManager;
       _db = db;
     }
+
+  [AllowAnonymous]
+	[HttpPost]
+	[Route("authenticate")]
+	public IActionResult Authenticate(Users usersdata)
+	{
+		var token = _jWTManager.Authenticate(usersdata);
+
+		if (token == null)
+		{
+			return Unauthorized();
+		}
+
+		return Ok(token);
+	}
 
     // GET api/dogs
     [HttpGet]
