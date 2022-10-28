@@ -14,9 +14,9 @@ namespace Animal_Shelter.Repository
 	{
 		Dictionary<string, string> UsersRecords = new Dictionary<string, string>
 		{
-			{ "user1","password1"},
-			{ "user2","password2"},
-			{ "user3","password3"},
+			{ "Matt","Goofy"},
+			{ "Don","Luna"},
+			{ "Lisa","password3"},
 		};
 
 		private readonly IConfiguration iconfiguration;
@@ -24,9 +24,9 @@ namespace Animal_Shelter.Repository
 		{
 			this.iconfiguration = iconfiguration;
 		}
-		public Tokens Authenticate(Users users)
+		public Tokens Authenticate(User user)
 		{
-			if (!UsersRecords.Any(x => x.Key == users.Name && x.Value == users.Password)) {
+			if (!UsersRecords.Any(x => x.Key == user.Name && x.Value == user.Password)) {
 				return null;
 			}
 
@@ -37,7 +37,7 @@ namespace Animal_Shelter.Repository
 			{
 				Subject = new ClaimsIdentity(new Claim[]
 				{
-				new Claim(ClaimTypes.Name, users.Name)                    
+				new Claim(ClaimTypes.Name, user.Name)                    
 				}),
 				Expires = DateTime.UtcNow.AddMinutes(525600),
 				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey),SecurityAlgorithms.HmacSha256Signature)

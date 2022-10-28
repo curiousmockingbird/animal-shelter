@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Animal_Shelter.Migrations
 {
     [DbContext(typeof(Animal_ShelterContext))]
-    [Migration("20221028204259_Initial")]
+    [Migration("20221028220151_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,6 +129,45 @@ namespace Animal_Shelter.Migrations
                             Age = 8,
                             Name = "Pluto",
                             Sex = "Male"
+                        });
+                });
+
+            modelBuilder.Entity("Animal_Shelter.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Name = "Matt",
+                            Password = "Goofy"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Name = "Don",
+                            Password = "Luna"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Name = "Lisa",
+                            Password = "Tobias"
                         });
                 });
 #pragma warning restore 612, 618

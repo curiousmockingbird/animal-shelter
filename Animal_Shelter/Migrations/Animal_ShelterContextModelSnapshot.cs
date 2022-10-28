@@ -129,6 +129,45 @@ namespace Animal_Shelter.Migrations
                             Sex = "Male"
                         });
                 });
+
+            modelBuilder.Entity("Animal_Shelter.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            Name = "Matt",
+                            Password = "Goofy"
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            Name = "Don",
+                            Password = "Luna"
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            Name = "Lisa",
+                            Password = "Tobias"
+                        });
+                });
 #pragma warning restore 612, 618
         }
     }

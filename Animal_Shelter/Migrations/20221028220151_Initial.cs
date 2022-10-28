@@ -37,6 +37,20 @@ namespace Animal_Shelter.Migrations
                     table.PrimaryKey("PK_Dogs", x => x.DogId);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false),
+                    Password = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
             migrationBuilder.InsertData(
                 table: "Cats",
                 columns: new[] { "CatId", "Age", "Name", "Sex" },
@@ -60,6 +74,16 @@ namespace Animal_Shelter.Migrations
                     { 4, 9, "Rumbo", "Male" },
                     { 5, 8, "Pluto", "Male" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "Name", "Password" },
+                values: new object[,]
+                {
+                    { 1, "Matt", "Goofy" },
+                    { 2, "Don", "Luna" },
+                    { 3, "Lisa", "Tobias" }
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -69,6 +93,9 @@ namespace Animal_Shelter.Migrations
 
             migrationBuilder.DropTable(
                 name: "Dogs");
+
+            migrationBuilder.DropTable(
+                name: "Users");
         }
     }
 }
