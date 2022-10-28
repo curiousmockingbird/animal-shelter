@@ -10,9 +10,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Animal_Shelter.Repository;
 
-
-
-
 namespace Animal_Shelter
 {
     public class Startup
