@@ -35,9 +35,9 @@ namespace Animal_Shelter.Models
 
           builder.Entity<User>()
           .HasData(
-              new User { UserId = 1, Name = "Matt", Password = "Goofy"},
-              new User { UserId = 2, Name = "Don", Password = "Luna"},
-              new User { UserId = 3, Name = "Lisa", Password = "Tobias"}
+              new User { UserId = 1, Name = "Matt", Password = "1234"},
+              new User { UserId = 2, Name = "Don", Password = "abcd"},
+              new User { UserId = 3, Name = "Lisa", Password = "alfa"}
           );
     }
   }

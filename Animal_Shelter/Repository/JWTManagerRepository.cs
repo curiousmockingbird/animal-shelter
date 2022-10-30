@@ -14,9 +14,9 @@ namespace Animal_Shelter.Repository
 	{
 		Dictionary<string, string> UsersRecords = new Dictionary<string, string>
 		{
-			{ "Matt","Goofy"},
-			{ "Don","Luna"},
-			{ "Lisa","password3"},
+			{ "Matt","1234"},
+			{ "Don","abcd"},
+			{ "Lisa","alfa"},
 		};
 
 		private readonly IConfiguration iconfiguration;
@@ -39,7 +39,7 @@ namespace Animal_Shelter.Repository
 				{
 				new Claim(ClaimTypes.Name, user.Name)                    
 				}),
-				Expires = DateTime.UtcNow.AddMinutes(525600),
+				Expires = DateTime.UtcNow.AddMinutes(100),
 				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey),SecurityAlgorithms.HmacSha256Signature)
 			};
 			var token = tokenHandler.CreateToken(tokenDescriptor);
