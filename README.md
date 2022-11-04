@@ -23,12 +23,12 @@ _The API has three endpoints:_
 * _api/cats_
 * _api/dogs_
 
-_api/cats and api/dogs provides with a database of cats and dogs, respectively. You can filter the search for cats or dogs in the database based on two parameters, their name or their sex, in the following way:_
+_api/cats and api/dogs provide with a database of cats and dogs, respectively. You can filter the search for cats or dogs in the database based on two parameters, their name or their sex, in the following way:_
 * _api/cats?name='The name of the cat you want to look for'_
 * _api/cats?sex=male_
 * _api/cats?sex=female_
 
-_Though in this moment anyone with a token can have access to the information of the users of the API (which is an inconvenient situation), keep in mind that the api/users endpoint was thought to be accessed only by administrators of the API. It is something out of the scope of this project to assign user roles for the site._
+_Though at the moment anyone with a token can have access to the information of the users of the API (which is an inconvenient situation), keep in mind that the api/users endpoint was thought to be accessed only by administrators of the API. It is out of the scope of this project to assign user roles for the site._
 
 _In order to access the database, you will need an generate a Jason Web token and submit it with your API requests. An Jason Web token grants limited access to a user’s account. These are the steps to generate and use a JWT in the API:_
 
@@ -72,6 +72,48 @@ _In order to access the database, you will need an generate a Jason Web token an
 
 * _You will use your token in order to access the API endpoints. In POSTMAN, go to the Authorization tab, select the "Bearer Token" option, and place your token. Now you may access any of the API endpoints. 
 <img src="img/Screenshot 2022-10-29 at 08.14.47.png">_
+
+##### _Post, Put and Delete functionality:_
+###### _Post:_
+* _Once the user is authenticated, you can create/add a dog or cat to the database. Go to the Body tab, select raw and JSON as the file extension, and input the four properties of the dog or cat(catId/dogId, name, age, sex). Make sure you make a POST request to the api/cats or api/dogs endpoint, depending on the animal you want to add/create:_
+
+<img src="img/Screenshot 2022-11-04 at 12.50.png">          
+
+* _You will get a "500 Internal Server Errorr" message._
+<img src="img/Screenshot 2022-11-04 at 12.51
+.png">
+
+* _However, if make another GET request, you'll see a new cat/dog will be added to the database:_
+
+<img src="img/Screenshot 2022-11-04 at 12.53.png">
+
+###### _Put:_
+
+* _In order to modify any properties of a cat or dog, go to the Body tab, select raw and JSON as the file extension, and modify property/properties of the dog or cat(catId/dogId, name, age, sex). Make sure you make a PUT request to the api/cats or api/dogs endpoint —depending on the animal you are modifying—, followed by the id number of the animal:_
+
+<img src="img/put/Screenshot 2022-11-04 at 13.33.png">
+
+* _You wil get a "204 No Content" error message._
+
+<img src="img/put/Screenshot 2022-11-04 at 13.35.58.png">
+
+* _However, if you make another GET request to your api/cats or api/dogs endpoint, you will see the modified property/properties:_
+
+<img src="img/put/Screenshot 2022-11-04 at 13.39.28.png">
+
+###### _Delete:_
+
+* _In order to delete an animal from the database, make sure you make a DELETE request to the api/cats or api/dogs endpoint —depending on the animal—, followed by the id number of the animal you want to remove from the database:_
+
+<img src="img/put/Screenshot 2022-11-04 at 13.45.34.png">
+
+* _You wil get a "204 No Content" error message:_
+
+<img src="img/put/Screenshot 2022-11-04 at 13.45.44.png">
+
+* _If you make another GET request, you will see the animal was removed from the database:_
+
+<img src="img/put/Screenshot 2022-11-04 at 13.46.23.png">
 
 ## Known Bugs
 
