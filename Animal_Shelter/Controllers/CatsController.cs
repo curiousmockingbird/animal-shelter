@@ -62,7 +62,7 @@ namespace Animal_Shelter.Controllers
       _db.Cats.Add(cat);
       await _db.SaveChangesAsync();
 
-      return CreatedAtAction(nameof(Cat), new { id = cat.CatId }, cat);
+      return CreatedAtAction("POST", new { id = cat.CatId }, cat);
     }
 
     // PUT: api/cats/5

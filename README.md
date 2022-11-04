@@ -79,11 +79,9 @@ _In order to access the database, you will need an generate a Jason Web token an
 
 <img src="img/Screenshot 2022-11-04 at 12.50.png">          
 
-* _You will get a "500 Internal Server Errorr" message._
-<img src="img/Screenshot 2022-11-04 at 12.51
-.png">
+* _You will get a "201 Created" message._
 
-* _However, if make another GET request, you'll see a new cat/dog will be added to the database:_
+* _When you make another GET request, you'll see a new cat/dog will be added to the database:_
 
 <img src="img/Screenshot 2022-11-04 at 12.53.png">
 
